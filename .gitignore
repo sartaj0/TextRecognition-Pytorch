@@ -1,0 +1,12 @@
+# python file
+train2.py
+yoloRecognition.py
+detect.py
+lr_Scheduler.py
+
+
+HelpfullLinks.txt
+
+# Folders
+check_points/
+__pycache__/
