@@ -4,9 +4,6 @@ import torch.nn as nn
 from torchvision import models
 import torch.nn.functional as F
 
-os.environ['TORCH_HOME'] = os.path.sep.join(["E:", "Models", "cache", "pytorch"])
-
-
 def count_parameters(model):
     return sum(p.numel() for p in model.parameters() if p.requires_grad)
 
@@ -235,6 +232,7 @@ def weights_init(m):
         m.bias.data.fill_(0)
 
 if __name__ == "__main__":
+    os.environ['TORCH_HOME'] = os.path.sep.join(["E:", "Models", "cache", "pytorch"])
 
     # model = VGG_FeatureExtractor(input_channel=3, output_channel=256)
     # a = torch.Tensor(1, 3, 32, 100)

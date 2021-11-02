@@ -71,7 +71,8 @@ def save_loss_image(train_loss, val_loss, epoch, model_save_name, model_save_dir
 
 
 
-def train(imgSize, imgChannel, data_path, jsonFilePath, model_backbone, model_save_directory, num_epochs, cnn_output_channel, rnn_hidden_size, batch_size):
+def train(imgSize, imgChannel, data_path, jsonFilePath, model_backbone, model_save_directory, 
+    num_epochs, cnn_output_channel, rnn_hidden_size, batch_size, lr):
 
     # data_path, model_save_directory
     image_fns = os.listdir(data_path)
@@ -118,9 +119,6 @@ def train(imgSize, imgChannel, data_path, jsonFilePath, model_backbone, model_sa
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     print("Model will run on:", device)
 
-    # lr = 0.000087
-    lr = 0.0001
-    # lr = 0.1
     weight_decay = 1e-3
     clip_norm = 5
     lr_scheduler_type = "ReduceLROnPlateau"
@@ -237,9 +235,14 @@ if __name__ == "__main__":
     rnn_hidden_size = 256
     cnn_output_channel = 512
     num_epochs = 50
-    model_backbone = "resnet18"
+    model_backbone = "resnet50"
     imgSize = (50, 200)
+    # imgSize = (32, 100)
     imgChannel = 3
+    lr = 0.0001
+    # lr = 0.000087
+    # lr = 0.1
+
 
     train(imgSize, imgChannel, data_path, jsonFilePath, model_backbone, model_save_directory, 
-        num_epochs, cnn_output_channel, rnn_hidden_size, batch_size)
+        num_epochs, cnn_output_channel, rnn_hidden_size, batch_size, lr)
