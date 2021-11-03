@@ -3,7 +3,6 @@ train2.py
 yoloRecognition.py
 detect.py
 lr_Scheduler.py
-load_with_onnx.py
 
 
 HelpfullLinks.txt
