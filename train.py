@@ -123,11 +123,9 @@ def train(imgSize, imgChannel, data_path, jsonFilePath, model_backbone, model_sa
     clip_norm = 5
     lr_scheduler_type = "ReduceLROnPlateau"
 
-
-    # crnn = CRNN(num_chars, rnn_input_size=256, rnn_hidden_size=rnn_hidden_size, backbone=model_backbone)
     crnn = Model(imgSize, model_backbone, imgChannel, cnn_output_channel, rnn_hidden_size, num_chars)
 
-    print(crnn)
+    # print(crnn)
 
     optimizer = optim.Adam(crnn.parameters(), lr=lr, weight_decay=weight_decay)
     # optimizer = optim.SGD(crnn.parameters(), lr=lr, weight_decay=weight_decay, momentum=0.9)

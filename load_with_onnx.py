@@ -1,26 +1,8 @@
 import cv2
 import os
 import numpy as np
+from inferenceWithOnnx import process, decodeText
 from nltk import edit_distance
-
-
-def decodeText(scores):
-	text = ""
-	alphabet = "0123456789abcdefghijklmnopqrstuvwxyz"
-	for i in range(scores.shape[0]):
-		c = np.argmax(scores[i][0])
-		if c != 0:
-			text += alphabet[c - 1]
-		else:
-			text += '-'
-
-	# adjacent same letters as well as background text must be removed to get the final output
-	char_list = []
-	for i in range(len(text)):
-		if text[i] != '-' and (not (i > 0 and text[i] == text[i - 1])):
-			char_list.append(text[i])
-	return ''.join(char_list)
-
 
 folder = r"E:/dataset/TextRecognition/test"
 model_folder = "check_points"
@@ -40,21 +22,9 @@ for model in os.listdir(model_folder):
 	for img in os.listdir(folder):
 		image = cv2.imread(os.path.join(folder, img))
 
-		if imgChannel == 3:
-			image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB).astype(np.float32)
-			image /= 255.0
-			image -= [0.485, 0.456, 0.406]
-			image /= [0.229, 0.224, 0.225]
-			blob = cv2.dnn.blobFromImage(image, size=(200, 50))
-
-		elif imgChannel == 1:
-			image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-			blob = cv2.dnn.blobFromImage(image, size=(100, 32), mean=127.5, scalefactor=1 / 127.5)
+		blob = process(image, imgChannel, model_path)
 
 		gtText = img.split(".")[0]
-
-		# print(blob.max(), blob.min(), blob.shape)
-		# exit()
 
 		recognizer.setInput(blob)
 		result = recognizer.forward()
