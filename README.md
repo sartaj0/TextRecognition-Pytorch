@@ -61,7 +61,7 @@ you can use [inferenceWithOnnx.py](https://github.com/sartaj0/TextRecognition-Py
 ![](https://github.com/sartaj0/GIfs/blob/main/2.jpg) <br> 
 output: `develop` <br> 
 
-<img src="https://github.com/sartaj0/GIfs/blob/main/q.jpg" width="700" title="failure cases">
+<img src="https://github.com/sartaj0/GIfs/blob/main/q.jpg" width="500" title="failure cases"\>
 output <br> 
 ```
 dassmate date page the water cucle is thie palith that al watey follows as at moves asound eanth in dpfestent ptat liouid water hound in oceans o rivers akee and even under raround solid iee ie found is alaciers onow and at the nortr and south sboles water vadoy a aas do found in farlhs atmos here the sun heat causce alaceers and snow se te melt into liouid water this watey sanpe intt oceans lakes and streams watey foom ce melbino snow and pe rlkd aoes iito e tthe 50ic tiere at suddlie water st tos folants and the around waa ter that ce we drink worrmi uaterr na bouy siscs up throuan easltis atmuss ene as the watey vaour viscs hiaher and hiahea the cool air ot the itmos causes the waler vapoly to ttuyn back snte lrauid water creatina clouds this brocess i5 called condenstin uhen a cloud be fuu a lrouid usater it falle toom the skn as rain
