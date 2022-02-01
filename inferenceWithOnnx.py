@@ -23,8 +23,10 @@ def process(image, imgChannel, model_path):
 	if imgChannel == 3:
 		image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB).astype(np.float32)
 		image /= 255.0
-		image -= [0.485, 0.456, 0.406]
-		image /= [0.229, 0.224, 0.225]
+		# image -= [0.485, 0.456, 0.406]
+		# image /= [0.229, 0.224, 0.225]
+		image -= [0.5, 0.5, 0.5]
+		image /= [0.5, 0.5, 0.5]
 	elif imgChannel == 1:
 		image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY).astype(np.float32)
 		image -= 127.5
@@ -39,7 +41,8 @@ def process(image, imgChannel, model_path):
 	return blob
 
 if __name__ == "__main__":
-	model_path = r"E:\Projects2\TextRecognition-Pytorch\check_points\vgg_256_1.onnx"
+	# model_path = r"E:\Projects2\TextRecognition-Pytorch\check_points\vgg_256_1.onnx"
+	model_path = r"E:\Projects2\helperFunctions\output.quantized.onnx"
 	imagePath = r"E:\Projects2\AnswerEvaluation\TestingImages\2.jpg"
 
 	recognizer = cv2.dnn.readNetFromONNX(model_path)

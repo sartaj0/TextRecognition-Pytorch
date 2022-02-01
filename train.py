@@ -147,6 +147,11 @@ def train(imgSize, imgChannel, data_path, jsonFilePath, model_backbone, model_sa
     model_save_name = f"{model_backbone}_{rnn_hidden_size}_{imgChannel}"
     PATH = os.path.join(model_save_directory, f"{model_save_name}.pth")
 
+    if os.path.isfile(PATH):
+        answer = input("Would you like to load previous model - Y/n: ")
+        if answer[0].lower() == 'y':
+            crnn.load_state_dict(torch.load(PATH))
+
     min_val_loss = None
     for epoch in range(1, num_epochs+1):
         epoch_loss_list = [] 
